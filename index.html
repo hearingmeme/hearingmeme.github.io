@@ -3,20 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@hearingmeme">
   <meta name="twitter:creator" content="@hearingmeme">
   <meta name="twitter:title" content="Whack The Rumors – $HEARING Game 👂💀">
   <meta name="twitter:description" content="Just whacked rumors in the chaotic $HEARING game on Solana. High score energy! Play now and join the degen vibes.">
   <meta name="twitter:image" content="https://hearingthings.meme/images/game-preview.jpg">
+  <meta name="twitter:image:alt" content="Whack The Rumors - $HEARING memecoin game preview on Solana">
+
+  <!-- Open Graph (compatibilité maximale) -->
   <meta property="og:title" content="Whack The Rumors – $HEARING Game 👂💀">
   <meta property="og:description" content="Hearing Things: the memecoin where you whack rumors before they whack you. Score big, share the chaos! #HEARING #Solana">
   <meta property="og:image" content="https://hearingthings.meme/images/game-preview.jpg">
-  <meta property="og:url" content="https://hearingthings.meme>
+  <meta property="og:image:alt" content="Whack The Rumors - $HEARING memecoin game preview on Solana">
+  <meta property="og:url" content="https://hearingthings.meme">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hearing Things">
+
   <title>Hearing Things</title>
   <meta name="description" content="Hearing Things is a Solana memecoin launched on Bonk.fun, bringing chaotic hearing things… vibes and $HEARING degen energy since September 20, 2025."/>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="icon" type="image/png" href="favicon.png">
@@ -141,6 +149,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <div class="container">
@@ -236,6 +245,7 @@ the character is usually drawn with a confident or suspicious expression, as if 
 </div>
 
 <script>
+// IMPORTANT : Corrige l'URL du site ici pour le partage X
 const aboutText=document.getElementById('aboutText');const bodyImage=document.getElementById('bodyImage');const speechBubble=document.getElementById('speechBubble');const videoContainer=document.getElementById('videoContainer');const video=document.getElementById('hearingVideo');const closeBtn=document.getElementById('closeVideoBtn');const videoTrigger=document.getElementById('videoTrigger');const audioControls=document.getElementById('audioControls');const prevVideoBtn=document.getElementById('prevVideoBtn');const nextVideoBtn=document.getElementById('nextVideoBtn');const moneyRain=document.getElementById('moneyRain');const aboutBlock=document.getElementById('aboutBlock');
 const audioFiles=['audio/hearingthings01.mp3','audio/hearingthings02.mp3','audio/hearingthings03.mp3','audio/hearingthings04.mp3','audio/hearingthings05.mp3'];
 const videoFiles=['vids/hearing.mp4','vids/hearing1.mp4','vids/hearing2.mp4','vids/hearing3.mp4','vids/hearing5.mp4','vids/hearing6.mp4','vids/hearing7.mp4','vids/hearing8.mp4','vids/hearing9.mp4'];
@@ -276,7 +286,7 @@ function whack(index){if(!gameRunning)return;const ear=ears[index];if(!ear.class
 function popEar(){if(!gameRunning)return;const inactiveEars=Array.from(ears).filter(e=>!e.classList.contains('active'));if(inactiveEars.length===0)return;const randomEar=inactiveEars[Math.floor(Math.random()*inactiveEars.length)];let symbol='👂';if(Math.random()<0.20){symbol=bonusEmojis[Math.floor(Math.random()*bonusEmojis.length)];randomEar.style.color='#ffcc00';randomEar.style.textShadow='0 0 10px #ffcc00';}else{randomEar.style.color='';randomEar.style.textShadow='';}randomEar.innerHTML=symbol;randomEar.classList.add('active');setTimeout(()=>{if(randomEar.classList.contains('active')){randomEar.classList.remove('active');if(symbol==='👂'&&Math.random()<0.40){misses++;missesEl.textContent=misses;const randomPhrase=gamePhrases[Math.floor(Math.random()*gamePhrases.length)];rumorBubble.textContent=randomPhrase;rumorBubble.style.display='block';const soundPath=phraseSounds[randomPhrase];if(soundPath){const missSound=new Audio(soundPath);missSound.volume=0.4;missSound.play().catch(()=>{});}setTimeout(()=>rumorBubble.style.display='none',1400);}if(misses>=5)gameOver();}},900+Math.random()*1400);}
 function gameLoop(){if(!gameRunning)return;popEar();setTimeout(gameLoop,450-Math.min(score*1.8,300));}
 function startGame(){gameRunning=true;score=0;combo=1;misses=0;scoreEl.textContent=0;comboEl.textContent='x1';missesEl.textContent=0;startBtn.textContent="KEEP WHACKING!";startBtn.style.display='block';gameLoop();}
-function gameOver(){gameRunning=false;gameBoard.innerHTML=`<div class="game-over-screen"><div class="game-over-title">GAME OVER</div><div class="game-over-stats">Score: <span>${score}</span><br>High: <span>${highScore}</span><br>Combo: <span>${combo.toFixed(1)}x</span><br>Misses: <span>${misses}/5</span></div><div class="game-over-text">The rumors got you... 👂💀</div><button class="try-again-btn">TRY AGAIN</button><button class="share-x-btn">SHARE ON X</button></div>`;const tryAgainBtn=gameBoard.querySelector('.try-again-btn');if(tryAgainBtn){tryAgainBtn.onclick=()=>{initGameBoard();startGame();}}const shareBtn=gameBoard.querySelector('.share-x-btn');if(shareBtn){shareBtn.onclick=()=>{const tweetText=`Just whacked ${score} rumors in $HEARING game! 👂💀\nCombo x${combo.toFixed(1)} | High: ${highScore}\nThe rumors got me... \nPlay now: https://hearingthings.com`;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`,'_blank');}}startBtn.style.display='none';}
+function gameOver(){gameRunning=false;gameBoard.innerHTML=`<div class="game-over-screen"><div class="game-over-title">GAME OVER</div><div class="game-over-stats">Score: <span>${score}</span><br>High: <span>${highScore}</span><br>Combo: <span>${combo.toFixed(1)}x</span><br>Misses: <span>${misses}/5</span></div><div class="game-over-text">The rumors got you... 👂💀</div><button class="try-again-btn">TRY AGAIN</button><button class="share-x-btn">SHARE ON X</button></div>`;const tryAgainBtn=gameBoard.querySelector('.try-again-btn');if(tryAgainBtn){tryAgainBtn.onclick=()=>{initGameBoard();startGame();}}const shareBtn=gameBoard.querySelector('.share-x-btn');if(shareBtn){shareBtn.onclick=()=>{const tweetText=`Just whacked ${score} rumors in $HEARING game! 👂💀\nCombo x${combo.toFixed(1)} | High: ${highScore}\nThe rumors got me... \nPlay now: https://hearingthings.meme`;window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`,'_blank');}}startBtn.style.display='none';}
 gameTrigger.onclick=()=>{gameOverlay.classList.add('active');setTimeout(initGameBoard,100);};
 closeGameBtn.addEventListener('click',()=>{gameOverlay.classList.remove('active');gameRunning=false;});
 mobileExitBtn.addEventListener('click',()=>{gameOverlay.classList.remove('active');gameRunning=false;});
